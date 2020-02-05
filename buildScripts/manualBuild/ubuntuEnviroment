@@ -1,0 +1,1 @@
+sudo apt install gcc-multilib build-essential libusb libusb-1.0-0-dev ccache python3.8 
