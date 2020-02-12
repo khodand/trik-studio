@@ -21,7 +21,7 @@ proc NoOldInvokeMethod { fileName } {
       if { [regexp {Q_ARG} $line]  || [regexp {Q_RETURN_ARG} $line] } {
         report $fileName $lineCount "Passing method name as a literal string is forbidden, use Functor signature instead"
       } elseif {![regexp {;$} $line]} {
-        set line [lindex $allLines [$x + 1]]
+        set line [lindex $allLines [expr { $x + 1 }]]
         if { [regexp {Q_ARG} $line]  || [regexp {Q_RETURN_ARG} $line] } {
           report $fileName $lineCount "Passing method name as a literal string is forbidden, use Functor signature instead"
         }
