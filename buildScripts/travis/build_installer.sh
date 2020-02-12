@@ -15,7 +15,7 @@ case $TRAVIS_OS_NAME in
 esac
 df -h .
 
-if ! $TIMEOUT && [ "$TRAVIS_REPO_SLUG" == "trikset/trik-studio" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]
+if ! $TIMEOUT && [ "$TRAVIS_REPO_SLUG" == "khodand/trik-studio" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]
 then
       git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
       git fetch --unshallow --tags # for `git describe --tags` to work
@@ -31,6 +31,7 @@ then
       $EXECUTOR bash -ic "\
       echo Start build checker archive \
       && bin/$CONFIG/build-checker-installer.sh \
+      && bin/$CONFIG/checker.sh examples/solutions/alongTheBox.qrs \
       && sshpass -p $password rsync -avze 'ssh -o StrictHostKeyChecking=no' bin/$CONFIG/trik_checker.tar.xz $username@$server:dl/ts/fresh/checker/checker-$TRAVIS_OS_NAME-$CONFIG-$TRAVIS_BRANCH.tar.xz \
       || false \
 "
