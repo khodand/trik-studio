@@ -14,7 +14,7 @@
 
 proc NoOldInvokeMethod { fileName } {
   set lineCount 1
-  set allLines [getAllLines $file Name]
+  set allLines [getAllLines $fileName]
   for {set x 0} {$x < [llength $allLines]} {incr x} {
     set line [lindex $allLines $x]
     if { [regexp {invokeMethod} $line] } {
