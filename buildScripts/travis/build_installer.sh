@@ -15,7 +15,7 @@ case $TRAVIS_OS_NAME in
 esac
 df -h .
 
-if ! $TIMEOUT && [ "$TRAVIS_REPO_SLUG" == "trikset/trik-studio" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]
+if ! $TIMEOUT && [ "$TRAVIS_REPO_SLUG" == "khodand/trik-studio" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]
 then
       git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
       git fetch --unshallow --tags # for `git describe --tags` to work
