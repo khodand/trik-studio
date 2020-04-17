@@ -100,7 +100,7 @@ Component.prototype.createOperations = function()
 	}
 }
 
-// Utility function like QString QDir::toNativeSeparators(const QString & pathName)
+// Utility function  like QString QDir::toNativeSeparators(const QString & pathName)
 var Dir = new function () {
 	this.toNativeSeparator = function (path) {
 		if (installer.value("os") == "win")
