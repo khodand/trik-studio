@@ -13,6 +13,6 @@ Component.prototype.createOperations = function()
                                     installer.executableName + ".vbs\" \"%1\"",
                                "@ProductName@ Project",
                                "application/octet-stream",
-                               "@TargetDir@\splashscreen.png");
+                               "@TargetDir@\\splashscreen.png");
     }
 }
