@@ -38,7 +38,6 @@ unix:!macx {
 	cp -a bin/release/images $(INSTALL_ROOT)$$PROGRAMDIR/;\
 	cp -a bin/release/examples $(INSTALL_ROOT)$$PROGRAMDIR/;\
 	cp -a bin/release/splashscreen.png $(INSTALL_ROOT)$$PROGRAMDIR/images;\
-	cp -a installer/images/trik-studio.ico $(INSTALL_ROOT)$$PROGRAMDIR/images;\
 	test -d $(INSTALL_ROOT)/etc || mkdir -p $(INSTALL_ROOT)/etc;\
 	echo 'pathToLogs=.config/trikStudio/logs/' > $(INSTALL_ROOT)$$CONFFILE;\
 	echo "pathToImages=$$PROGRAMDIR/images/iconset1/" >> $(INSTALL_ROOT)$$CONFFILE;\
