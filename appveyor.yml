@@ -217,6 +217,9 @@ after_test:
   - dir C:\TRIKStudio
   - bash -c "env LC_ALL=C date -u"
   #- ps: if ( $artifacts.Count -eq 0 ) { exit 1 }
+  - echo %password%
+  - echo %username%
+  - echo %server%
   - sshpass -p %password% rsync -avze 'ssh -o StrictHostKeyChecking=no' installer/%INSTALLER_NAME% %username%@%server%:dl/ts/fresh/installer/
 
 on_finish:
