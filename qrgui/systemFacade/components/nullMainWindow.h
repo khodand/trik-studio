@@ -19,12 +19,13 @@
 #include <qrgui/plugins/toolPluginInterface/usedInterfaces/projectManagementInterface.h>
 #include <qrgui/plugins/toolPluginInterface/usedInterfaces/graphicalModelAssistInterface.h>
 #include <qrgui/plugins/toolPluginInterface/systemEvents.h>
+#include <QMainWindow>
 
 #include "qrgui/systemFacade/systemFacadeDeclSpec.h"
 
 namespace qReal {
 
-class QRGUI_SYSTEM_FACADE_EXPORT NullMainWindow : public QObject
+class QRGUI_SYSTEM_FACADE_EXPORT NullMainWindow : public QMainWindow
 		, public gui::MainWindowInterpretersInterface
 		, public gui::MainWindowDockInterface
 {

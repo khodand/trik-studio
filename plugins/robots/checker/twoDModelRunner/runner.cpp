@@ -19,6 +19,7 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonValue>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
 
 #include <qrutils/widgets/consoleDock.h>
 #include <kitBase/robotModel/robotParts/shell.h>
@@ -80,9 +81,7 @@ bool Runner::interpret(const QString &saveFile, const bool background
 	/// GUI must be separated from logic and not appear here at all.
 	QList<view::TwoDModelWidget *> twoDModelWindows;
 	for (auto &&widget : QApplication::allWidgets()) {
-		if (background) {
-			widget->hide();
-		}
+		widget->setHidden(background);
 		if (const auto twoDModelWindow = dynamic_cast<view::TwoDModelWidget *>(widget)) {
 			twoDModelWindows << twoDModelWindow;
 		}
@@ -103,12 +102,15 @@ bool Runner::interpret(const QString &saveFile, const bool background
 		}
 
 		auto &t = twoDModelWindow->model().timeline();
-		t.setImmediateMode(background);
 		if (customSpeedFactor >= model::Timeline::normalSpeedFactor) {
 			t.setSpeedFactor(customSpeedFactor);
 		}
+		else {
+			t.setImmediateMode(background);
+		}
 	}
 
+	//mMainWindow.setHidden(background);
 	mReporter.onInterpretationStart();
 	if (mMode == "script") {
 		return mPluginFacade.interpretCode(mInputsFile);

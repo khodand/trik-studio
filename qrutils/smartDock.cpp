@@ -22,6 +22,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QPushButton>
+#include <qrgui/systemFacade/components/nullMainWindow.h>
 
 #include <qrutils/widgets/qRealDialog.h>
 #include <qrgui/plugins/toolPluginInterface/usedInterfaces/editorInterface.h>
@@ -145,7 +146,7 @@ void SmartDock::checkFloating()
 void SmartDock::checkCentralWidget()
 {
 	const bool tabsVisible = isFloating() || !isVisible() || mMainWindow->dockWidgetArea(this) != Qt::TopDockWidgetArea;
-	for (QTabWidget * const centralWidget : mMainWindow->centralWidget()->findChildren<QTabWidget *>()) {
+	for (const auto centralWidget : mMainWindow->centralWidget()->findChildren<QTabWidget *>()) {
 		centralWidget->setVisible(tabsVisible);
 		qReal::EditorInterface *editor = tabsVisible
 				? dynamic_cast<qReal::EditorInterface *>(centralWidget)
@@ -177,6 +178,10 @@ bool SmartDock::isAnimating()
 
 QMainWindow *SmartDock::findMainWindow() const
 {
+	if (!dynamic_cast<qReal::NullMainWindow *>(mMainWindow)) {
+		return nullptr;
+	}
+
 	for (QWidget * const topLevelWidget : QApplication::topLevelWidgets()) {
 		if (QMainWindow * const window = dynamic_cast<QMainWindow *>(topLevelWidget)) {
 			return window;

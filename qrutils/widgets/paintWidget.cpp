@@ -26,6 +26,8 @@ void PaintWidget::paintEvent(QPaintEvent *event)
 	QWidget::paintEvent(event);
 
 	QPainter painter(this);
+	if (!mPainter)
+		return;
 	mPainter->paint(&painter, geometry());
 }
 
