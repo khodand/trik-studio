@@ -225,6 +225,8 @@ stages:
     - ${{ parameters.buildNoTestsStep }}
     - ${{ parameters.setTagNameStep }}
     - ${{ parameters.buildInstallerStep }}
+    - publish: installer/
+      artifact: "$(Agent.OS) installer"
 
 - stage: macOsInstallerStage
   displayName: MacOs installer
@@ -246,3 +248,5 @@ stages:
     - ${{ parameters.buildNoTestsStep }}
     - ${{ parameters.setTagNameStep }}
     - ${{ parameters.buildInstallerStep }}
+    - publish: installer/
+      artifact: "$(Agent.OS) installer"
